@@ -1,0 +1,78 @@
+<div>
+    <div class="modal-header">
+        <h2 class="modal-title"><b>Reservation form</b></h2>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+            <div class="container">
+                <div class="row">
+                    <h4 style="text-align: center;"><b> {{ name }} </b></h4>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Email</div>
+                        <input class="form-control" type="text" autocomplete="on" formControlName="email"
+                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <div>Date</div>
+                        <!-- <div style="display: flex"> -->
+                        <div class="form-group input-group"> 
+                                <input class="form-control date-picker" [matDatepicker]="picker" [min]="todayDate" type="text" placeholder="MM/DD/YYYY" formControlName="date"
+                                [ngClass]="{ 'is-invalid': submitted && f['date'].errors }">
+                                <mat-datepicker-toggle matSuffix [for]="picker" style="color:black;"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <div *ngIf="submitted && f['date'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['date'].errors['required']">Date is required</div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div>Time</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 col-sm-3 col-md-2 col-lg-2 form-group">
+                        <select style="height: 35px;width: 70px;" class="form-control" formControlName="time_hour"
+                                [ngClass]="{ 'is-invalid': submitted && f['time_hour'].errors }">
+                            <option *ngFor="let hour of Time_hour" [value]="hour">
+                                {{ hour }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f['time_hour'].errors" class="invalid-feedback d-block">
+                            <div *ngIf="f['time_hour'].errors['required']"></div>
+                        </div>
+                    </div>
+                    <div class="col col-1 col-sm-1 col-md-1 col-lg-1 mt-1" style="text-align: right;">
+                        :
+                    </div>
+                    <div class="col col-3 col-sm-3 col-md-2 col-lg-2 form-group">
+                        <select disableRipple style="height: 35px;width: 70px;" class="form-control" formControlName="time_interval"
+                                    [ngClass]="{ 'is-invalid': submitted && f['time_interval'].errors }">
+                            <option *ngFor="let interval of Time_interval" [value]="interval">
+                                {{ interval }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f['time_interval'].errors" class="invalid-feedback">
+                            <div *ngIf="f['time_interval'].errors['required']"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <button type="button" (click)="OnSubmit()" class="btn btn-danger me-md-2">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+</div>

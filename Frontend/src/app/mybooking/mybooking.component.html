@@ -1,0 +1,28 @@
+<div *ngIf='NoRecord' class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style="margin-left:auto; margin-right:auto;color: red; font-size: 20px;">
+    <p class="mt-2">No reservation to show</p>
+</div>
+<div *ngIf='!NoRecord' class="mx-auto col-12 col-sm-12 col-md-8 col-lg-8 bg-image" style="background-color: white;">
+    <table class="table table-hover">
+        <thead class="table-light text-center">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Business Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor="let item of List; let i = index;">
+                <th scope="row">{{ i+1 }}</th>
+                <td >{{item.BusinessName}}</td>
+                <td >{{ item.date }}</td>
+                <td >{{ item.Time }}</td>
+                <td >{{ item.email }}</td>
+                <td> <button style="border:0px; background-color:white" (click)="OnDelete(i)"><i class="fa fa-trash-o"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
