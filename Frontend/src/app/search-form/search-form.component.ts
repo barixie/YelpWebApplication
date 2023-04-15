@@ -97,7 +97,7 @@ export class SearchFormComponent implements OnInit {
     if(this.checkoutForm.value.auto_check){
       this.checkoutForm.get('location')?.disable();
       this.checkoutForm.get('location')?.reset();
-      var geo_url = "https://ipinfo.io/?token=fdb66135f152ea"
+      var geo_url = "https://ipinfo.io/?token=Your_token"
       fetch(geo_url)
           .then(response => response.json())
           .then(geo =>{
@@ -130,7 +130,7 @@ export class SearchFormComponent implements OnInit {
       window.alert('Distance too large, should be less than 25 miles');
     }
     if(!auto_check){
-      var googleGeoApi_base_url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC_aTIZfujA0jZUlwJ5R0wFVBCGO5vTzMo&address="
+      var googleGeoApi_base_url = "https://maps.googleapis.com/maps/api/geocode/json?key=your_api_key&address="
       googleGeoApi_base_url += location
       console.log(googleGeoApi_base_url)
       fetch(googleGeoApi_base_url)

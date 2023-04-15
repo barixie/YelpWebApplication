@@ -15,7 +15,7 @@ app.get('/search', (req, res) => {
   }
   else{
     var location = req.query.Location
-    var googleGeoApi_base_url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC_aTIZfujA0jZUlwJ5R0wFVBCGO5vTzMo&address="
+    var googleGeoApi_base_url = "https://maps.googleapis.com/maps/api/geocode/json?key=your_key&address="
     googleGeoApi_base_url += location.replaceAll(' ','+').replaceAll(',','')
     console.log(googleGeoApi_base_url)
     axios.get(googleGeoApi_base_url)
@@ -37,7 +37,7 @@ app.get('/search', (req, res) => {
   }
 
   function search_business(req){
-    api_key = "O2MyQbMzSni-QlKepm3rt-Y-XFWrEQ8CHVrcQjT0UiaFhNFpCK47CLGl1jfmQoINaFmYiVS6Mb5wTINfXH_nRLWRzGd1qdNUaeC3PQyIvsN5rTbGKUudWSffYjspY3Yx"
+    api_key = "Your Key"
     Yelp_base_url = "https://api.yelp.com/v3/businesses/search?"
     //Yelp_base_url_test = "https://api.yelp.com/v3/businesses/search?term=Pizza&latitude=34.052235&longitude=-118.243683&categories=Food&radius=16093"
     //extract search args from user input
@@ -71,7 +71,7 @@ app.get('/search', (req, res) => {
 
 //req : keyword
 app.get('/autoComplete', (req, res) => {
-  api_key = "O2MyQbMzSni-QlKepm3rt-Y-XFWrEQ8CHVrcQjT0UiaFhNFpCK47CLGl1jfmQoINaFmYiVS6Mb5wTINfXH_nRLWRzGd1qdNUaeC3PQyIvsN5rTbGKUudWSffYjspY3Yx"
+  api_key = "your_key"
   AutoComplete_base_url = "https://api.yelp.com/v3/autocomplete?text="
   AutoComplete_base_url += req.query.keyword
   axios.get(AutoComplete_base_url, {
@@ -91,7 +91,7 @@ app.get('/autoComplete', (req, res) => {
 
 // req : id
 app.get('/search/detail', (req,res) => {
-  api_key = "O2MyQbMzSni-QlKepm3rt-Y-XFWrEQ8CHVrcQjT0UiaFhNFpCK47CLGl1jfmQoINaFmYiVS6Mb5wTINfXH_nRLWRzGd1qdNUaeC3PQyIvsN5rTbGKUudWSffYjspY3Yx"
+  api_key = "Your_key"
   Yelp_detail_base_url = "https://api.yelp.com/v3/businesses/"
   Yelp_detail_base_url += req.query.id
   axios.get(Yelp_detail_base_url, {
@@ -111,7 +111,7 @@ app.get('/search/detail', (req,res) => {
 
 // req : id
 app.get('/search/review', (req,res) => {
-  api_key = "O2MyQbMzSni-QlKepm3rt-Y-XFWrEQ8CHVrcQjT0UiaFhNFpCK47CLGl1jfmQoINaFmYiVS6Mb5wTINfXH_nRLWRzGd1qdNUaeC3PQyIvsN5rTbGKUudWSffYjspY3Yx"
+  api_key = "your_key"
   Yelp_detail_base_url = "https://api.yelp.com/v3/businesses/"
   Yelp_detail_base_url += req.query.id
   Yelp_detail_base_url += "/reviews"
